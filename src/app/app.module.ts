@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CommonModule, TitleCasePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -10,9 +12,13 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    CommonModule
   ],
-  providers: [],
+  providers: [
+    TitleCasePipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
