@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModelField } from '@models/ModelField';
+import { ModelField } from 'src/app/models/ModelField';
 
 @Component({
   selector: 'app-model-builder',

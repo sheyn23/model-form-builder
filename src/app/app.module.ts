@@ -1,4 +1,4 @@
-import { CommonModule, TitleCasePipe } from '@angular/common';
+import { CommonModule, HashLocationStrategy, LocationStrategy, TitleCasePipe } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -21,7 +21,8 @@ import { AppComponent } from './app.component';
     CommonModule
   ],
   providers: [
-    TitleCasePipe
+    TitleCasePipe,
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [AppComponent]
 })

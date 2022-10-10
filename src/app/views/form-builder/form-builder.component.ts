@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormField } from '@models/FormField';
+import { FormField } from 'src/app/models/FormField';
 
 @Component({
   selector: 'app-form-builder',
