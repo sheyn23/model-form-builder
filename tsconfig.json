@@ -1,4 +1,3 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
   "compileOnSave": false,
   "compilerOptions": {
@@ -19,7 +18,45 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@models/*": [
+        "src/app/shared/models/*"
+      ],
+      "@enums/*": [
+        "src/app/shared/enums/*"
+      ],
+      "@helpers/*": [
+        "src/app/shared/helpers/*"
+      ],
+      "@services/*": [
+        "src/app/shared/services/*"
+      ],
+      "@pipes/*": [
+        "src/app/shared/pipes/*"
+      ],
+      "@guards/*": [
+        "src/app/shared/guards/*"
+      ],
+      "@interceptors/*": [
+        "src/app/shared/interceptors/*"
+      ],
+      "@components/*": [
+        "src/app/components/*"
+      ],
+      "@views/*": [
+        "src/app/views/*"
+      ],
+      "@environments/*": [
+        "src/environments/*"
+      ],
+      "@images": [
+        "src/assets/images/*"
+      ],
+      "@fonts": [
+        "src/assets/fonts/*"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

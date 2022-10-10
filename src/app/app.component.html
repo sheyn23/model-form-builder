@@ -1,23 +1,6 @@
-<div class="container">
-    <div class="settings-container">
-        <input type="text" class="title" [(ngModel)]="title" [ngModelOptions]="{standalone: true}"
-            placeholder="Название модели">
-        <div class="field" *ngFor="let field of fields; index as i">
-            <input type="text" [(ngModel)]="fields[i].name" [ngModelOptions]="{standalone: true}">
-            <select name="type" id="type" [(ngModel)]="fields[i].type" [ngModelOptions]="{standalone: true}">
-                <option *ngFor="let type of types" [value]="type">{{type}}</option>
-            </select>
-            <button (click)="removeField(i)">Удалить поле</button>
-        </div>
-        <button (click)="addField()">Добавить поле</button>
-        <button (click)="calculate()">Конвертировать</button>
-    </div>
-    <div class="results-container">
-        <div class="resultTSModel" (click)="copyToClipboard(TSModelEl)" #TSModelEl *ngIf="calculatedTSModel.length > 0"
-            [innerHTML]="calculatedTSModel"></div>
-        <div class="resultCSHModel" (click)="copyToClipboard(CSHModelEl)" #CSHModelEl
-            *ngIf="calculatedCSHModel.length > 0" [innerHTML]="calculatedCSHModel"></div>
-        <div class="resultCSHDto" (click)="copyToClipboard(CSHDtoEl)" #CSHDtoEl *ngIf="calculatedCSHDto.length > 0"
-            [innerHTML]="calculatedCSHDto"></div>
-    </div>
-</div>
+<nav>
+    <a routerLink="/form-builder">Форм Билдер</a>
+    <a routerLink="/model-builder">Модел Билдер</a>
+</nav>
+
+<router-outlet></router-outlet>

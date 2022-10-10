@@ -1,8 +1,8 @@
-export class Field {
+export class ModelField {
     name: string;
     type: string;
 
-    constructor(field: Field) {
+    constructor(field: ModelField) {
         this.name = field.name;
         this.type = field.type;
     }

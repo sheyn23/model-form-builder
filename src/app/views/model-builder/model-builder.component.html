@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="settings-container">
+        <div class="form-group">
+            <span class="">Выберите режим работы:</span>
+            <fieldset class="float-right" id="usage">
+                <input type="radio" id="fieldsMode" value="fieldsMode" name="textareaMode" [(ngModel)]="mode"
+                    [ngModelOptions]="{standalone: true}">
+                <label for="fieldsMode">Редактирование полей</label>
+                <input type="radio" id="textareaMode" value="textareaMode" name="textareaMode" [(ngModel)]="mode"
+                    [ngModelOptions]="{standalone: true}">
+                <label for="textareaMode">Внести список полей</label>
+            </fieldset>
+        </div>
+        <div class="fields-holder" *ngIf="mode === 'fieldsMode'">
+            <input type="text" class="title" [(ngModel)]="title" [ngModelOptions]="{standalone: true}"
+                placeholder="Название модели">
+            <div class="field" *ngFor="let field of fields; index as i">
+                <input type="text" [(ngModel)]="fields[i].name" [ngModelOptions]="{standalone: true}">
+                <select name="type" id="type" [(ngModel)]="fields[i].type" [ngModelOptions]="{standalone: true}">
+                    <option *ngFor="let type of types" [value]="type">{{type}}</option>
+                </select>
+                <button (click)="removeField(i)">Удалить поле</button>
+            </div>
+            <button (click)="addField()">Добавить поле</button>
+            <button (click)="calculate()">Конвертировать</button>
+        </div>
+        <div class="textarea-holder" *ngIf="mode === 'textareaMode'">
+            <input type="text" class="title" [(ngModel)]="title" [ngModelOptions]="{standalone: true}"
+                placeholder="Название модели">
+            <label for="textarea">Примечание:</label> <br>
+            <textarea id="textarea" class="form-control" type="text" [(ngModel)]="textareaFields"
+                [ngModelOptions]="{standalone: true}" rows="20" cols="50"></textarea>
+            <button (click)="calculate()">Конвертировать</button>
+        </div>
+    </div>
+    <div class="results-container">
+        <div class="resultTSModel" (click)="copyToClipboard(TSModelEl)" #TSModelEl *ngIf="calculatedTSModel.length > 0"
+            [innerHTML]="calculatedTSModel"></div>
+        <div class="resultCSHModel" (click)="copyToClipboard(CSHModelEl)" #CSHModelEl
+            *ngIf="calculatedCSHModel.length > 0" [innerHTML]="calculatedCSHModel"></div>
+        <div class="resultCSHDto" (click)="copyToClipboard(CSHDtoEl)" #CSHDtoEl *ngIf="calculatedCSHDto.length > 0"
+            [innerHTML]="calculatedCSHDto"></div>
+    </div>
+</div>

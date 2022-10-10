@@ -1,0 +1,24 @@
+.container
+    width: 100%
+    max-width: 1600px
+    margin: auto
+    display: flex
+
+    .results-container, .settings-container
+        flex: 1
+
+    label
+        margin-left: 5px
+        margin-right: 15px
+
+    .resultTSModel, .resultCSHModel, .resultCSHDto
+        margin-top: 40px
+        padding: 20px
+        background: #2d2d2d
+        border-radius: 20px
+        cursor: pointer
+        color: #FFF5E9
+        font-size: 24px
+
+        &:hover
+            transform: perspective(400px) translateZ(5px)

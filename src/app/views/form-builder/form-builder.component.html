@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="settings-container">
+        <input type="text" class="title" [(ngModel)]="title" [ngModelOptions]="{standalone: true}"
+            placeholder="Название модели">
+        <div class="field" *ngFor="let field of fields; index as i">
+            <input type="text" placeholder="Название (name)" [(ngModel)]="fields[i].title"
+                [ngModelOptions]="{standalone: true}">
+            <input type="text" placeholder="Содержание (title)" [(ngModel)]="fields[i].name"
+                [ngModelOptions]="{standalone: true}">
+            <ng-container *ngIf="fields[i].radios != undefined ">
+                <div class="radios">
+                    <div class="radio" *ngFor="let radio of fields[i].radios; index as k">
+                        <input type="text" [(ngModel)]="fields[i].radios![k]" [ngModelOptions]="{standalone: true}">
+                        <button (click)="removeRadioOption(i, 'radios', k)">Удалить</button>
+                    </div>
+                    <button (click)="addRadioOption(i, 'radios')">Добавить</button>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="fields[i].options != undefined ">
+                <div class="options">
+                    <div class="option" *ngFor="let radio of fields[i].options; index as k">
+                        <input type="text" [(ngModel)]="fields[i].options![k]" [ngModelOptions]="{standalone: true}">
+                        <button (click)="removeRadioOption(i, 'options', k)">Удалить</button>
+                    </div>
+                    <button (click)="addRadioOption(i, 'options')">Добавить</button>
+                </div>
+            </ng-container>
+            <select name="type" id="type" [(ngModel)]="fields[i].type" [ngModelOptions]="{standalone: true}"
+                (change)="setTypeFields($event, i)">
+                <option *ngFor="let type of types" [value]="type">{{type}}</option>
+            </select>
+            <button (click)="removeField(i)">Удалить поле</button>
+        </div>
+        <button (click)="addField()">Добавить поле</button>
+        <button (click)="calculate()">Конвертировать</button>
+    </div>
+    <div class="results-container">
+        <div class="resultForm" (click)="copyToClipboard(resultForm)" #resultForm *ngIf="convertedForm.length > 0"
+            [innerHTML]="convertedForm"></div>
+    </div>
+</div>
